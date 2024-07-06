@@ -7,7 +7,6 @@ namespace ServiceLocator.Wave.Bloon
 {
     public class BloonController
     {
-        private PlayerService playerService;
         private WaveService waveService;
         private SoundService soundService;
 
@@ -22,9 +21,8 @@ namespace ServiceLocator.Wave.Bloon
 
         public Vector3 Position => bloonView.transform.position;
 
-        public BloonController(PlayerService playerService, WaveService waveService, SoundService soundService, BloonView bloonPrefab, Transform bloonContainer)
+        public BloonController(WaveService waveService, SoundService soundService, BloonView bloonPrefab, Transform bloonContainer)
         {
-            this.playerService = playerService;
             this.waveService = waveService;
             this.soundService = soundService;
             bloonView = Object.Instantiate(bloonPrefab, bloonContainer);
