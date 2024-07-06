@@ -12,7 +12,6 @@ namespace ServiceLocator.UI
     public class UIService : MonoBehaviour
     {
         [SerializeField] private EventService eventService;
-        [SerializeField] private WaveService waveService;
 
         [Header("Gameplay Panel")]
         [SerializeField] private GameObject gameplayPanel;
@@ -38,6 +37,17 @@ namespace ServiceLocator.UI
         [SerializeField] private TextMeshProUGUI gameEndText;
         [SerializeField] private Button playAgainButton;
         [SerializeField] private Button quitButton;
+
+        public static UIService Instance { get; private set; }
+
+
+        void Awake()
+        {
+            if (Instance == null)
+                Instance = this;
+            else
+                Destroy(gameObject);
+        }
 
 
         private void Start()
@@ -70,7 +80,7 @@ namespace ServiceLocator.UI
 
         private void OnNextWaveButton()
         {
-            waveService.StarNextWave();
+            WaveService.Instance.StarNextWave();
             SetNextWaveButton(false);
         }
 
