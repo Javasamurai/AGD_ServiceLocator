@@ -32,7 +32,7 @@ namespace ServiceLocator.Wave
         {
             currentWaveId = 0;
             waveDatas = waveScriptableObject.WaveConfigurations.Find(config => config.MapID == mapId).WaveDatas;
-            UIService.Instance.UpdateWaveProgressUI(currentWaveId, waveDatas.Count);
+            GameService.Instance.uiService.UpdateWaveProgressUI(currentWaveId, waveDatas.Count);
         }
 
         public void StarNextWave()
@@ -68,13 +68,13 @@ namespace ServiceLocator.Wave
             activeBloons.Remove(bloon);
             if (HasCurrentWaveEnded())
             {
-                SoundService.Instance.PlaySoundEffects(Sound.SoundType.WaveComplete);
-                UIService.Instance.UpdateWaveProgressUI(currentWaveId, waveDatas.Count);
+                GameService.Instance.soundService.PlaySoundEffects(Sound.SoundType.WaveComplete);
+                GameService.Instance.uiService.UpdateWaveProgressUI(currentWaveId, waveDatas.Count);
 
                 if(IsLevelWon())
-                    UIService.Instance.UpdateGameEndUI(true);
+                    GameService.Instance.uiService.UpdateGameEndUI(true);
                 else
-                    UIService.Instance.SetNextWaveButton(true);
+                    GameService.Instance.uiService.SetNextWaveButton(true);
             }
         }
 
