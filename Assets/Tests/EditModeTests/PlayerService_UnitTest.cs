@@ -4,6 +4,9 @@ using ServiceLocator.Main;
 using ServiceLocator.Player;
 using ServiceLocator.Player.Projectile;
 using System.Collections.Generic;
+using ServiceLocator.Map;
+using ServiceLocator.Sound;
+using ServiceLocator.UI;
 
 public class PlayerService_UnitTest 
 {
