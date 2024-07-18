@@ -23,7 +23,7 @@ namespace ServiceLocator.Wave
         private UIService uiService;
         private MapService mapService;
         private SoundService soundService;
-        
+        private PlayerService playerService;
 
         public WaveService(WaveScriptableObject waveScriptableObject)
         {
@@ -33,7 +33,7 @@ namespace ServiceLocator.Wave
 
         private void InitializeBloons()
         {
-            bloonPool = new BloonPool(waveScriptableObject);
+            bloonPool = new BloonPool(waveScriptableObject, this, soundService, playerService);
             activeBloons = new List<BloonController>();
         }
 
@@ -95,12 +95,13 @@ namespace ServiceLocator.Wave
 
         private bool IsLevelWon() => currentWaveId >= waveDatas.Count;
 
-        public void Init(EventService eventService, MapService mapService, SoundService soundService, UIService uiService)
+        public void Init(EventService eventService, MapService mapService, SoundService soundService, UIService uiService, PlayerService playerService)
         {
             this.eventService = eventService;
             this.mapService = mapService;
             this.soundService = soundService;
             this.uiService = uiService;
+            this.playerService = playerService;
             SubscribeToEvents();
         }
     }

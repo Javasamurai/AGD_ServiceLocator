@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using ServiceLocator.Player;
+using ServiceLocator.Sound;
 using UnityEngine;
 using ServiceLocator.Utilities;
 
@@ -15,12 +17,18 @@ namespace ServiceLocator.Wave.Bloon
         private BloonView bloonPrefab;
         private List<BloonScriptableObject> bloonScriptableObjects;
         private Transform bloonContainer;
+        private WaveService waveService;
+        private SoundService soundService;
+        private PlayerService playerService;
 
-        public BloonPool(WaveScriptableObject waveScriptableObject)
+        public BloonPool(WaveScriptableObject waveScriptableObject, WaveService waveService, SoundService soundService, PlayerService playerService)
         {
             this.bloonPrefab = waveScriptableObject.BloonPrefab;
             this.bloonScriptableObjects = waveScriptableObject.BloonScriptableObjects;
             bloonContainer = new GameObject("Bloon Container").transform;
+            this.waveService = waveService;
+            this.soundService = soundService;
+            this.playerService = playerService;
         }
 
         public BloonController GetBloon(BloonType bloonType)
@@ -31,6 +39,6 @@ namespace ServiceLocator.Wave.Bloon
             return bloon;
         }
 
-        protected override BloonController CreateItem() => new BloonController(bloonPrefab, bloonContainer);
+        protected override BloonController CreateItem() => new BloonController(bloonPrefab, bloonContainer, waveService, soundService, playerService);
     }
 }
