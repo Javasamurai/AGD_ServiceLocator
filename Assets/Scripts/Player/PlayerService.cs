@@ -26,7 +26,6 @@ namespace ServiceLocator.Player
         {
             this.playerScriptableObject = playerScriptableObject;
             projectilePool = new ProjectilePool(playerScriptableObject.ProjectilePrefab, playerScriptableObject.ProjectileScriptableObjects);
-            InitializeVariables();
         }
         
         
@@ -35,6 +34,7 @@ namespace ServiceLocator.Player
             this.uiService = uiService;
             this.mapService = mapService;
             this.soundService = soundService;
+            InitializeVariables();
         }
 
         private void InitializeVariables()

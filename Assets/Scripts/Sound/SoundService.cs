@@ -1,4 +1,5 @@
 using System;
+using ServiceLocator.Player;
 using UnityEngine;
 
 namespace ServiceLocator.Sound
