@@ -11,7 +11,7 @@ public class KeyView : MonoBehaviour, IInteractable
         // GameService.Instance.GetPlayerController().KeysEquipped++;
         keysEquipped++;
         EventService.Instance.OnKeyPickedUp.InvokeEvent(keysEquipped);
-        gameUIView.UpdateKeyText();
+        // gameUIView.UpdateKeyText();
         gameObject.SetActive(false);
     }
 }
