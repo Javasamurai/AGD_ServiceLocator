@@ -15,4 +15,3 @@ public class EventController<T>
     public void RemoveListener(Action<T> listener) => baseEvent -= listener;
     public void InvokeEvent(T type) => baseEvent?.Invoke(type);
 }
-
